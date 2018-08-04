@@ -9,14 +9,15 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Templating\TemplateNameParser;
 use Symfony\Bridge\Twig\TwigEngine;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
-class AppWriteFileCommand extends Command
+class AppCreateClassCommand extends Command
 {
-    protected static $defaultName = 'app:write_file';
+    protected static $defaultName = 'app:create_class';
 
     protected function configure()
     {
@@ -34,6 +35,10 @@ class AppWriteFileCommand extends Command
         if ($fileName) {
             $io->note(sprintf('Generating file: %s', $fileName));
         }
+
+        $encoder = new XmlEncoder();
+
+        $io->note(var_dump($encoder->decode(file_get_contents('src/test/test.xml'), 'xml')));
 
         $fs = new Filesystem();
         $loader = new FilesystemLoader('src/views');

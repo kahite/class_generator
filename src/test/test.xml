@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<persons>
+    <person id='1'>
+        <name>foo</name>
+        <age>99</age>
+        <city>Paris</city>
+    </person>
+    <person id='2'>
+        <name>foo</name>
+        <age>99</age>
+        <city>Paris</city>
+    </person>
+</persons>

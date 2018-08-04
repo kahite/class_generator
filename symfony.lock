@@ -98,6 +98,9 @@
             "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
         }
     },
+    "symfony/serializer": {
+        "version": "v4.1.3"
+    },
     "symfony/templating": {
         "version": "v4.1.3"
     },
