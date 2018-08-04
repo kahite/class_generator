@@ -9,6 +9,10 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Templating\TemplateNameParser;
+use Symfony\Bridge\Twig\TwigEngine;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 class AppWriteFileCommand extends Command
 {
@@ -32,7 +36,13 @@ class AppWriteFileCommand extends Command
         }
 
         $fs = new Filesystem();
-        $fs->dumpFile('temp/' . $fileName, 'hello');
+        $loader = new FilesystemLoader('src/views');
+        $templating = new TwigEngine(new Environment($loader, []), new TemplateNameParser());
+
+        $fs->dumpFile(
+            'temp/' . $fileName,
+            $templating->render('basicTemplate.twig', [])
+          );
 
         $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
     }
