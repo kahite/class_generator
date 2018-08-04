@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Model;
+
+class {{ className | capitalize }}
+{
+{% for attribute in attributesArray %}
+    private ${{ attribute }};
+{% endfor %}
+
+{% if attributesArray | length > 0 %}
+    // Getters
+{% for attribute in attributesArray %}
+    public function get{{ attribute | capitalize }}()
+    {
+        return $this->{{ attribute }};
+    }
+{% endfor %}
+{% endif %}
+
+{% if attributesArray | length > 0 %}
+    // Setters
+{% for attribute in attributesArray %}
+    public function set{{ attribute | capitalize }}(${{ attribute }})
+    {
+        $this->{{ attribute }} = ${{ attribute }};
+        return $this;
+    }
+{% endfor %}
+{% endif %}
+}

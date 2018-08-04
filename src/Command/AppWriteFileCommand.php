@@ -41,8 +41,16 @@ class AppWriteFileCommand extends Command
 
         $fs->dumpFile(
             'temp/' . $fileName,
-            $templating->render('basicTemplate.twig', [])
-          );
+            $templating->render(
+                'class.twig',
+                [
+                    'className'       => 'person',
+                    'attributesArray' => [
+                        'id', 'name', 'age', 'createdAt', 'sport_person'
+                    ]
+                ]
+            )
+        );
 
         $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
     }
