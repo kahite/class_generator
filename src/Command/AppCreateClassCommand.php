@@ -40,6 +40,13 @@ class AppCreateClassCommand extends Command
 
         $io->note(var_dump($encoder->decode(file_get_contents('src/test/test.xml'), 'xml')));
 
+
+                // $serializer = new Serializer(
+                //     array(new PersonsDenormalizer()),
+                //     array(new XMLEncoder())
+                // );
+                // $persons = $serializer->deserialize($data, Persons::class, 'xml');
+
         $fs = new Filesystem();
         $loader = new FilesystemLoader('src/views');
         $templating = new TwigEngine(new Environment($loader, []), new TemplateNameParser());
